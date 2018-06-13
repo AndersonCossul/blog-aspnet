@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MusicStore.Models;
 
 namespace MusicStore.Controllers
 {
@@ -6,17 +11,25 @@ namespace MusicStore.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var genres = new List<Genre>
+            {
+                new Genre { Name = "Disco" },
+                new Genre { Name = "Jazz" },
+                new Genre { Name = "Rock" }
+            };
+            return View(genres);
         }
 
         public ActionResult Browse(string genre)
         {
-            return View();
+            var genreModel = new Genre { Name = genre };
+            return View(genreModel);
         }
 
-        public ActionResult Details(int ID)
+        public ActionResult Details(int albumID)
         {
-            return View();
+            var album = new Album { Title = "Album " + albumID };
+            return View(album);
         }
     }
 }
