@@ -11,8 +11,8 @@ namespace MusicStore.Models
         public int      GenreID { get; set; }
         public int      ArtistID { get; set; }
         public string   Title { get; set; }
-        public double   Price { get; set; }
-        public string   AlbumArtURL { get; set; }
+        public decimal  Price { get; set; }
+        public string   AlbumArtUrl { get; set; }
         public Genre    Genre { get; set; }
         public Artist   Artist { get; set; }
     }
