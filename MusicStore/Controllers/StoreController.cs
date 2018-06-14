@@ -9,26 +9,26 @@ namespace MusicStore.Controllers
 {
     public class StoreController : Controller
     {
+        MusicStoreEntities storeDB = new MusicStoreEntities();
+
+        // List of Genres
         public ActionResult Index()
         {
-            var genres = new List<Genre>
-            {
-                new Genre { Name = "Disco" },
-                new Genre { Name = "Jazz" },
-                new Genre { Name = "Rock" }
-            };
+            var genres = storeDB.Genres.ToList();
             return View(genres);
         }
 
-        public ActionResult Browse(string genre)
+        // List of Albums for a particular Genre
+        public ActionResult BrowseGenreAlbums(string genre)
         {
-            var genreModel = new Genre { Name = genre };
+            var genreModel = storeDB.Genres.Include("Albums").Single(g => g.Name == genre);
             return View(genreModel);
         }
 
-        public ActionResult Details(int albumID)
+        // Details of an Album
+        public ActionResult AlbumDetails(int id)
         {
-            var album = new Album { Title = "Album " + albumID };
+            var album = storeDB.Albums.Find(id);
             return View(album);
         }
     }
