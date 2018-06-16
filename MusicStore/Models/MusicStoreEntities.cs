@@ -8,7 +8,9 @@ namespace MusicStore.Models
 {
     public class MusicStoreEntities : DbContext
     {
-        public DbSet<Album> Albums { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Album> Albums { get; set; }
+
+        public System.Data.Entity.DbSet<MusicStore.Models.Artist> Artists { get; set; }
     }
 }
